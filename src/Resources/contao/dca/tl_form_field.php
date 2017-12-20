@@ -30,7 +30,7 @@
         'label'         => &$GLOBALS['TL_LANG']['tl_form_field']['rangeSliderTextValues'],
         'exclude'       => true,
         'inputType'     => 'listWizard',
-        'eval'          => array('mandatory'=>true, 'tl_class'=>'clr'),
+        'eval'          => array('mandatory'=>true, 'tl_class'=>'clr', 'csv'=>','),
         'sql'           => "blob NULL"
     );
     /**
