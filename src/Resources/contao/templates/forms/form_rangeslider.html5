@@ -22,13 +22,13 @@
       type="<?= $this->type ?>"
       name="<?= $this->name ?>"
       id="ctrl_<?= $this->id ?>"
-      class="text<?php if ($this->hideInput) echo ' password'; ?><?php if ($this->class) echo ' ' . $this->class; ?>"
+      class="rangeslider<?php if ($this->class) echo ' ' . $this->class; ?>"
       value="<?= StringUtil::specialchars($this->value) ?>"
       data-rangeslider="true"
       data-min="<?= $this->rangeSliderNumericMin ?>"
       data-max="<?= $this->rangeSliderNumericMax ?>"
-      <?php if($this->rangeSliderNumericStep): ?> <?= $this->rangeSliderNumericStep ?><?php endif; ?>
-      <?php if($this->rangeSliderGrid): ?> <?= $this->rangeSliderGrid ?><?php endif; ?>
+      <?php if($this->rangeSliderNumericStep): ?> data-step="<?= $this->rangeSliderNumericStep ?>"<?php endif; ?>
+      <?php if($this->rangeSliderGrid): ?> data-grid="<?= $this->rangeSliderGrid ?>"<?php endif; ?>
       <?= $this->getAttributes() ?>>
   <?php endif; ?>
 
@@ -37,12 +37,12 @@
       type="<?= $this->type ?>"
       name="<?= $this->name ?>"
       id="ctrl_<?= $this->id ?>"
-      class="text<?php if ($this->hideInput) echo ' password'; ?><?php if ($this->class) echo ' ' . $this->class; ?>"
+      class="rangeslider<?php if ($this->class) echo ' ' . $this->class; ?>"
       value="<?= StringUtil::specialchars($this->value) ?>"
       data-rangeslider="true"
       data-force-edges="true"
       data-values="<?= $this->rangeSliderTextValues ?>"
-      <?php if($this->rangeSliderGrid): ?> <?= $this->rangeSliderGrid ?><?php endif; ?>
+      <?php if($this->rangeSliderGrid): ?> data-grid="<?= $this->rangeSliderGrid ?>"<?php endif; ?>
       <?= $this->getAttributes() ?>>
   <?php endif; ?>
 
