@@ -52,9 +52,9 @@
         {
             if (TL_MODE !== 'BE')
             {
-                $GLOBALS['TL_CSS'][] = 'bundles/rangeslider/css/ion.rangeSlider.css|static';
-                $GLOBALS['TL_CSS'][] = 'bundles/rangeslider/css/ion.rangeSlider.skinHTML5.css|static';
-                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/rangeslider/js/ion.rangeSlider.min.js|static';
+                $GLOBALS['TL_CSS'][] = 'bundles/rangeslider/css/ion.rangeSlider.css';
+                $GLOBALS['TL_CSS'][] = 'bundles/rangeslider/css/ion.rangeSlider.skinHTML5.css';
+                $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/rangeslider/js/ion.rangeSlider' . ($GLOBALS['TL_CONFIG']['debugMode'] ? '' : '.min') . '.js';
                 $GLOBALS['TL_BODY'][] = '<script>$(document).ready(function() { $("[data-rangeslider]").ionRangeSlider(); });</script>';
             }
         }
