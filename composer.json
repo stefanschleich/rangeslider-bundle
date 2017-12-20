@@ -1,7 +1,7 @@
 {
     "name": "plusx/rangeslider-bundle",
     "type": "contao-bundle",
-    "description": "Adds a new Fieldtype to forms that generate a rangeSlider.",
+    "description": "Contao bundle to add ion.rangeSlider functionality to forms",
     "license": "LGPL-3.0+",
     "version": "0.1.0",
     "authors": [
