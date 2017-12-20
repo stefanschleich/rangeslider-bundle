@@ -2,7 +2,7 @@
     "name": "plusx/rangeslider-bundle",
     "type": "contao-bundle",
     "description": "Contao bundle to add ion.rangeSlider functionality to forms.",
-    "license": "LGPL-3.0+",
+    "license": "MIT",
     "authors": [
         {
             "name": "Stefan Schleich",
