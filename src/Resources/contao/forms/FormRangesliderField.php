@@ -137,6 +137,8 @@
                 $this->addAttribute('data-grid', 'true');
             }
 
+            $this->addAttribute('data-force-edges', 'true');
+
             return parent::parse($arrAttributes);
         }
 

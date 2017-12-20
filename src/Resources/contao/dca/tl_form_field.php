@@ -64,13 +64,13 @@
         'sql'           => "varchar(255) NOT NULL default ''"
     );
     /**
-     * RangeSlider grid (show/hide)
+     * RangeSlider grid (data-grid)
      */
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['rangeSliderGrid'] = array
     (
         'label'         => &$GLOBALS['TL_LANG']['tl_form_field']['rangeSliderGrid'],
         'exclude'       => true,
         'inputType'     => 'checkbox',
-        'eval'          => array('tl_class'=>'clr'),
+        'eval'          => array('tl_class'=>'clr w50'),
         'sql'           => "char(1) NOT NULL default ''"
     );
