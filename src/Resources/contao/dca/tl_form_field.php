@@ -42,7 +42,7 @@
         'exclude'       => true,
         'search'        => true,
         'inputType'     => 'text',
-        'eval'          => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+        'eval'          => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'digit'),
         'sql'           => "varchar(255) NOT NULL default ''"
     );
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['rangeSliderNumericMax'] = array
@@ -51,7 +51,7 @@
         'exclude'       => true,
         'search'        => true,
         'inputType'     => 'text',
-        'eval'          => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+        'eval'          => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'digit'),
         'sql'           => "varchar(255) NOT NULL default ''"
     );
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['rangeSliderNumericStep'] = array
@@ -60,7 +60,7 @@
         'exclude'       => true,
         'search'        => true,
         'inputType'     => 'text',
-        'eval'          => array('maxlength'=>255, 'tl_class'=>'w50'),
+        'eval'          => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'digit'),
         'sql'           => "varchar(255) NOT NULL default ''"
     );
     /**
