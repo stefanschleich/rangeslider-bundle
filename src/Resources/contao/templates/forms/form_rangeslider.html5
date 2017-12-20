@@ -17,5 +17,33 @@
     <p class="error"><?= $this->getErrorAsString() ?></p>
   <?php endif; ?>
 
-  <input type="<?= $this->type ?>" name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="text<?php if ($this->hideInput) echo ' password'; ?><?php if ($this->class) echo ' ' . $this->class; ?>" value="<?= StringUtil::specialchars($this->value) ?>"<?= $this->getAttributes() ?>>
+  <?php if($this->rangeSliderType == 'rsNumeric'): ?>
+    <input
+      type="<?= $this->type ?>"
+      name="<?= $this->name ?>"
+      id="ctrl_<?= $this->id ?>"
+      class="text<?php if ($this->hideInput) echo ' password'; ?><?php if ($this->class) echo ' ' . $this->class; ?>"
+      value="<?= StringUtil::specialchars($this->value) ?>"
+      data-rangeslider="true"
+      data-min="<?= $this->rangeSliderNumericMin ?>"
+      data-max="<?= $this->rangeSliderNumericMax ?>"
+      <?php if($this->rangeSliderNumericStep): ?> <?= $this->rangeSliderNumericStep ?><?php endif; ?>
+      <?php if($this->rangeSliderGrid): ?> <?= $this->rangeSliderGrid ?><?php endif; ?>
+      <?= $this->getAttributes() ?>>
+  <?php endif; ?>
+
+  <?php if($this->rangeSliderType == 'rsText'): ?>
+    <input
+      type="<?= $this->type ?>"
+      name="<?= $this->name ?>"
+      id="ctrl_<?= $this->id ?>"
+      class="text<?php if ($this->hideInput) echo ' password'; ?><?php if ($this->class) echo ' ' . $this->class; ?>"
+      value="<?= StringUtil::specialchars($this->value) ?>"
+      data-rangeslider="true"
+      data-force-edges="true"
+      data-values="<?= $this->rangeSliderTextValues ?>"
+      <?php if($this->rangeSliderGrid): ?> <?= $this->rangeSliderGrid ?><?php endif; ?>
+      <?= $this->getAttributes() ?>>
+  <?php endif; ?>
+
 <?php $this->endblock(); ?>

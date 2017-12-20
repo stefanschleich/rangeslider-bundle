@@ -114,30 +114,12 @@
 
         public function parse($arrAttributes=null)
         {
-            if($this->rangeSliderType == 'rsNumeric')
-            {
-                $this->addAttribute('data-rangeslider', 'true');
-                $this->addAttribute('data-min', $this->rangeSliderNumericMin);
-                $this->addAttribute('data-max', $this->rangeSliderNumericMax);
-                if($this->rangeSliderNumericStep)
-                {
-                    $this->addAttribute('data-step', $this->rangeSliderNumericStep);
-                }
-            }
-            elseif($this->rangeSliderType == 'rsText')
-            {
-                $this->addAttribute('data-rangeslider', 'true');
-                $arrValues = \StringUtil::deserialize($this->rangeSliderTextValues);
-                $arrValues = implode(',', $arrValues);
-                $this->addAttribute('data-values', $arrValues);
-            }
 
-            if($this->rangeSliderGrid)
+            if($this->rangeSliderType == 'rsText')
             {
-                $this->addAttribute('data-grid', 'true');
+                $this->rangeSliderValues = \StringUtil::deserialize($this->rangeSliderTextValues);
+                $this->rangeSliderValues = implode(',', $this->rangeSliderValues);
             }
-
-            $this->addAttribute('data-force-edges', 'true');
 
             return parent::parse($arrAttributes);
         }
