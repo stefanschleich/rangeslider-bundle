@@ -42,7 +42,9 @@
         {
             parent::__construct($arrAttributes);
 
-            static::addRangeSliderAssets();
+            if (TL_MODE == 'FE') {
+                static::addRangeSliderAssets();
+            }
         }
 
         /**
