@@ -115,11 +115,11 @@
         public function parse($arrAttributes=null)
         {
 
-/*            if($this->rangeSliderType == 'rsText')
+            if($this->rangeSliderType == 'rsText')
             {
-                $this->rangeSliderValues = \StringUtil::deserialize($this->rangeSliderTextValues);
-                $this->rangeSliderValues = implode(',', $this->rangeSliderValues);
-            }*/
+                $this->rangeSliderTextValues = \StringUtil::deserialize($this->rangeSliderTextValues);
+                $this->rangeSliderTextValues = implode(',', $this->rangeSliderTextValues);
+            }
 
             return parent::parse($arrAttributes);
         }
