@@ -41,7 +41,7 @@
       value="<?= StringUtil::specialchars($this->value) ?>"
       data-rangeslider="true"
       data-force-edges="true"
-      data-values="<?= StringUtil::specialchars($this->rangeSliderValues) ?>"
+      data-values="<?= StringUtil::specialchars($this->rangeSliderTextValues) ?>"
       <?php if($this->rangeSliderGrid): ?> data-grid="<?= $this->rangeSliderGrid ?>"<?php endif; ?>
       <?= $this->getAttributes() ?>>
   <?php endif; ?>
