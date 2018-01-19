@@ -319,6 +319,7 @@
             decorate_both: true,
             values_separator: " — ",
 
+            input_values: [],
             input_values_separator: ";",
 
             disable: false,
@@ -387,6 +388,7 @@
             decorate_both: $inp.data("decorateBoth"),
             values_separator: $inp.data("valuesSeparator"),
 
+            input_values: $inp.data("input-values"),
             input_values_separator: $inp.data("inputValuesSeparator"),
 
             disable: $inp.data("disable"),
@@ -395,6 +397,7 @@
             extra_classes: $inp.data("extraClasses"),
         };
         config_from_data.values = config_from_data.values && config_from_data.values.split(",");
+        config_from_data.input_values = config_from_data.input_values && config_from_data.input_values.split(",");
 
         for (prop in config_from_data) {
             if (config_from_data.hasOwnProperty(prop)) {
@@ -416,12 +419,18 @@
                 val[1] = +val[1];
             }
 
-            if (options && options.values && options.values.length) {
+            if (config_from_data.input_values && config_from_data.input_values.length) {
++               config.from = val[0] && config_from_data.input_values.indexOf(''+val[0]);
++               config.to   = val[1] && config_from_data.input_values.indexOf(''+val[1]);
++           } else if (options && options.values && options.values.length) {
                 config.from = val[0] && options.values.indexOf(val[0]);
-                config.to = val[1] && options.values.indexOf(val[1]);
+                config.to   = val[1] && options.values.indexOf(val[1]);
+            } else if (config_from_data && config_from_data.values && config_from_data.values.length) {
++               config.from = val[0] && config_from_data.values.indexOf(''+val[0]);
++               config.to   = val[1] && config_from_data.values.indexOf(''+val[1]);
             } else {
                 config.from = val[0] && +val[0];
-                config.to = val[1] && +val[1];
+                config.to   = val[1] && +val[1];
             }
         }
 
@@ -454,10 +463,12 @@
             from: this.options.from,
             from_percent: 0,
             from_value: null,
+            from_input_value: null,
 
             to: this.options.to,
             to_percent: 0,
-            to_value: null
+            to_value: null,
+            to_input_value: null
         };
 
 
@@ -803,7 +814,7 @@
             if ($.contains(this.$cache.cont[0], e.target) || this.dragging) {
                 this.callOnFinish();
             }
-            
+
             this.dragging = false;
         },
 
@@ -1172,6 +1183,8 @@
 
                 if (this.options.values.length) {
                     this.result.from_value = this.options.values[this.result.from];
+                    this.result.from_input_value = this.options.input_values[this.result.from];
++                   if (this.result.from_input_value == undefined) this.result.from_input_value = this.result.from_value;
                 }
             } else {
                 this.coords.p_bar_x = this.toFixed(this.coords.p_from_fake + (this.coords.p_handle / 2));
@@ -1186,7 +1199,11 @@
 
                 if (this.options.values.length) {
                     this.result.from_value = this.options.values[this.result.from];
+                    this.result.from_input_value = this.options.input_values[this.result.from];
++                   if (this.result.from_input_value == undefined) this.result.from_input_value = this.result.from_value;
                     this.result.to_value = this.options.values[this.result.to];
+                    this.result.to_input_value = this.options.input_values[this.result.to];
++                   if (this.result.to_input_value == undefined) this.result.to_input_value = this.result.to_value
                 }
             }
 
@@ -1643,14 +1660,14 @@
         writeToInput: function () {
             if (this.options.type === "single") {
                 if (this.options.values.length) {
-                    this.$cache.input.prop("value", this.result.from_value);
+                    this.$cache.input.prop("value", this.result.from_input_value);
                 } else {
                     this.$cache.input.prop("value", this.result.from);
                 }
                 this.$cache.input.data("from", this.result.from);
             } else {
                 if (this.options.values.length) {
-                    this.$cache.input.prop("value", this.result.from_value + this.options.input_values_separator + this.result.to_value);
+                    this.$cache.input.prop("value", this.result.from_input_value + this.options.input_values_separator + this.result.to_input_value);
                 } else {
                     this.$cache.input.prop("value", this.result.from + this.options.input_values_separator + this.result.to);
                 }
@@ -2140,6 +2157,7 @@
             this.result.from_pretty = this._prettify(this.result.from);
             if (this.options.values) {
                 this.result.from_value = this.options.values[this.result.from];
+                this.result.from_input_value = this.options.input_values[this.result.from];
             }
         },
 
@@ -2149,6 +2167,7 @@
             this.result.to_pretty = this._prettify(this.result.to);
             if (this.options.values) {
                 this.result.to_value = this.options.values[this.result.to];
+                this.result.to_input_value = this.options.input_values[this.result.to];
             }
         },
 
